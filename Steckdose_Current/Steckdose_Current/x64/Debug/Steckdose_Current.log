@@ -1,0 +1,5 @@
+﻿  Steckdose_Current.cpp
+C:\Users\artur\Desktop\C++\Steckdose_Current\Steckdose_Current\Steckdose_Current.cpp(12,43): error C2661: std::uniform_int_distribution<int>::uniform_int_distribution: нет перегруженной функции, принимающей 3 аргументов
+  C:\Users\artur\Desktop\C++\Steckdose_Current\Steckdose_Current\Steckdose_Current.cpp(12,43):
+  при попытке сопоставить список аргументов "(int, int, double)"
+  
