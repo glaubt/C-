@@ -1,0 +1,6 @@
+﻿  LS-Schalter.cpp
+C:\Users\artur\Desktop\C++\LS-Schalter\LS-Schalter\LS-Schalter.cpp(22,22): warning C4566: символ, представленный универсальным именем символа "\u00F6", невозможно представить в текущей кодовой странице (1251)
+C:\Users\artur\Desktop\C++\LS-Schalter\LS-Schalter\LS-Schalter.cpp(22,22): warning C4566: символ, представленный универсальным именем символа "\u00DC", невозможно представить в текущей кодовой странице (1251)
+C:\Users\artur\Desktop\C++\LS-Schalter\LS-Schalter\LS-Schalter.cpp(25,22): warning C4566: символ, представленный универсальным именем символа "\u00DF", невозможно представить в текущей кодовой странице (1251)
+C:\Users\artur\Desktop\C++\LS-Schalter\LS-Schalter\LS-Schalter.cpp(28,22): warning C4566: символ, представленный универсальным именем символа "\u00FC", невозможно представить в текущей кодовой странице (1251)
+  LS-Schalter.vcxproj -> C:\Users\artur\Desktop\C++\LS-Schalter\x64\Debug\LS-Schalter.exe
