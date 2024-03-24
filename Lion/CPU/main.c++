@@ -1,63 +1,43 @@
 //Лион ядро
 #include <iostream>
-#include <vector>
-#include <string>
+#include <thread>// вы получаете доступ к классам и функциям, позволяющим создавать, управлять и синхронизировать потоки выполнения в вашей программе
+#include <vector>//который предоставляет удобный интерфейс для работы с динамическими массивами
+#include <mutex>// вы получаете доступ к классам и функциям для работы с мьютексами, такими как std::mutex, std::lock_guard и другими.
 
-// Пример базового класса процесса
-class Process {
-private:
-    std::string name;
-    int pid;
-public:
-    Process(std::string _name, int _pid) : name(_name), pid(_pid) {}
-    void execute() {
-        std::cout << "Process " << name << " with PID " << pid << " is executing.\n";
-    }
-};
 
-// Пример класса планировщика процессов
-class Scheduler {
-private:
-    std::vector<Process> processes;
-public:
-    void addProcess(Process process) {
-        processes.push_back(process);
+// Простая реализация микроядра
+    class Microkernel {
+    private:
+    std::mutex mutex_;
+    std::vector<std::thread> threads_;
+
+    public:
+    void createThread(void (*func)()) {
+        std::lock_guard<std::mutex> lock(mutex_);
+        threads_.push_back(std::thread(func));
     }
-    void executeProcesses() {
-        for (auto& process : processes) {
-            process.execute();
+
+    void joinAll() {
+        for (auto& thread : threads_) {
+            if (thread.joinable())
+                thread.join();
         }
     }
 };
 
-// Пример класса операционной системы
-class OperatingSystem {
-private:
-    Scheduler scheduler;
-public:
-    void boot() {
-        std::cout << "Booting the operating system...\n";
-        // Создаем несколько процессов
-        Process process1("Interface", 1);
-        Process process2("CMD", 2);
-        Process process3("Google", 3);
-        
-        // Добавляем процессы в планировщик
-        scheduler.addProcess(process1);
-        scheduler.addProcess(process2);
-        scheduler.addProcess(process3);
-    }
-    
-    void runProcesses() {
-        std::cout << "Executing processes...\n";
-        // Запускаем выполнение процессов
-        scheduler.executeProcesses();
-    }
-};
+// Пример функции, которая будет выполняться в потоке
+void CPU() {
+    std::cout << "This comes out" << std::endl;
+}
 
 int main() {
-    OperatingSystem os;
-    os.boot(); 
-    os.runProcesses(); 
+    Microkernel kernel;
+
+    // Создание потока с примерной функцией
+    kernel.createThread(CPU);
+
+    // Ждем завершения всех потоков
+    kernel.joinAll();
+
     return 0;
 }
